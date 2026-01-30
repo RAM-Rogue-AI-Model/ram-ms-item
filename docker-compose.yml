@@ -1,0 +1,18 @@
+version: '5.0.2'
+
+services:
+  db:
+    image: mariadb:latest
+    container_name: ram-ms-item-db
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: ram_password
+      MARIADB_DATABASE: ram-ms-item-db
+      MARIADB_USER: user
+      MARIADB_PASSWORD: ram_password
+    ports:
+      - '3306:3306'
+    volumes:
+      - mariadb_data:/var/lib/mysql
+volumes:
+  mariadb_data:

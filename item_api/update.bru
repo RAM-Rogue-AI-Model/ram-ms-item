@@ -1,0 +1,27 @@
+meta {
+  name: update
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3006/item/c0d3687e-a6ab-4387-9ba3-20ed59119469
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name" : "petite_potion",
+    "description": "Redonne 20 PV",
+    "price": 200,
+    "level_gap": 0,
+    "effect_name": "PV",
+    "effect_id": "huhuhhu"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
