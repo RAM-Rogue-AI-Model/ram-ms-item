@@ -7,6 +7,7 @@ interface configType {
   DATABASE_PASSWORD: string;
   DATABASE_DB_NAME: string;
   INTERNAL_SECRET: string;
+  RABBITMQ_URL: string;
 }
 
 export { configType };
