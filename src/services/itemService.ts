@@ -18,6 +18,14 @@ class ItemService {
     return prisma.item.findMany();
   }
 
+  async getByLevelGap(level: number) {
+    return prisma.item.findMany({
+      where: {
+        level_gap: level,
+      },
+    });
+  }
+
   async getById(id: string) {
     return prisma.item.findUnique({
       where: {

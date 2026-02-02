@@ -45,8 +45,15 @@ class ItemController {
   }
 
   async getAll(req: Request, res: Response) {
-    const item = await this.service.list();
-    res.json(item);
+    const level = req.query.level;
+    let items;
+    if (level) {
+      const levelNum = parseInt(level as string);
+      items = await this.service.getByLevelGap(levelNum);
+    } else {
+      items = await this.service.list();
+    }
+    res.json(items);
   }
 
   async update(req: Request, res: Response) {
