@@ -10,12 +10,12 @@ services:
     env_file:
       - .env
     depends_on:
-      db:
+      item-db:
         condition: service_healthy
     networks:
       - ram-shared-network
 
-  db:
+  item-db:
     image: mariadb:latest
     container_name: ram-ms-item-db
     restart: unless-stopped
@@ -33,7 +33,7 @@ services:
     networks:
       - ram-shared-network
     healthcheck:
-      test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
+      test: [ 'CMD', 'healthcheck.sh', '--connect', '--innodb_initialized' ]
       interval: 10s
       timeout: 5s
       retries: 5
