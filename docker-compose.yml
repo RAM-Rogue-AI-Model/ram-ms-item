@@ -28,10 +28,12 @@ services:
       - '3306:3306'
     volumes:
       - mariadb_data:/var/lib/mysql
+      - ./dataset.sql:/docker-entrypoint-initdb.d/dataset.sql:ro
+
     networks:
       - ram-shared-network
     healthcheck:
-      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+      test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -43,5 +45,3 @@ networks:
 
 volumes:
   mariadb_data:
-
-
