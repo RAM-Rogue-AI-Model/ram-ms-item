@@ -1,0 +1,146 @@
+openapi: 3.0.3
+info:
+  title: Item API
+  version: 1.0.0
+  description: API RAM - Item microservice
+servers:
+  - url: http://localhost:3006
+paths:
+  /item:
+    post:
+      summary: Créer un nouvel item
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemInput'
+      responses:
+        '201':
+          description: Item créé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '400':
+          description: Champs manquants ou invalides
+    get:
+      summary: Lister tous les items
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: level
+          schema:
+            type: integer
+          required: false
+          description: Filtrer par level_gap
+      responses:
+        '200':
+          description: Liste des items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+  /item/{id}:
+    get:
+      summary: Récupérer un item par son id
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Item trouvé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '404':
+          description: Item non trouvé
+    put:
+      summary: Mettre à jour un item
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemInput'
+      responses:
+        '200':
+          description: Item mis à jour
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '400':
+          description: Champs manquants ou invalides
+        '404':
+          description: Item non trouvé
+    delete:
+      summary: Supprimer un item
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Item supprimé
+        '404':
+          description: Item non trouvé
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    ItemInput:
+      type: object
+      required:
+        - name
+        - description
+        - price
+        - level_gap
+        - effect_name
+        - effect_id
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        level_gap:
+          type: integer
+        effect_name:
+          type: string
+        effect_id:
+          type: string
+    Item:
+      allOf:
+        - $ref: '#/components/schemas/ItemInput'
+        - type: object
+          properties:
+            id:
+              type: string
