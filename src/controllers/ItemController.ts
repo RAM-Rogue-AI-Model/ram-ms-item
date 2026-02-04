@@ -48,7 +48,7 @@ class ItemController {
     const level = req.query.level;
     let items;
     if (level) {
-      const levelNum = parseInt(level as string);
+      const levelNum = Number.parseInt(level as string);
       items = await this.service.getByLevelGap(levelNum);
     } else {
       items = await this.service.list();
