@@ -27,7 +27,7 @@ class ItemService {
         'Item',
         'INSERT',
         'ERROR',
-        `Failed to create item: ${error}`
+        `Failed to create item: ${String(error)}`
       );
       throw new Error('Item creation failed');
     }
@@ -39,7 +39,12 @@ class ItemService {
       void sendLog('Item', 'OTHER', 'INFO', `Listed all items`);
       return result;
     } catch (error) {
-      void sendLog('Item', 'OTHER', 'ERROR', `Failed to list items: ${error}`);
+      void sendLog(
+        'Item',
+        'OTHER',
+        'ERROR',
+        `Failed to list items: ${String(error)}`
+      );
       throw new Error('Failed to list items');
     }
   }
@@ -61,7 +66,7 @@ class ItemService {
       });
       if (result === null) {
         void sendLog('Item', 'OTHER', 'WARN', `Item with ID: ${id} not found`);
-        throw new Error('Item not found');
+        return null;
       }
       void sendLog('Item', 'OTHER', 'INFO', `Retrieved item with ID: ${id}`);
       return result;
@@ -70,7 +75,7 @@ class ItemService {
         'Item',
         'OTHER',
         'ERROR',
-        `Failed to retrieve item with ID: ${id}, Error: ${error}`
+        `Failed to retrieve item with ID: ${id}, Error: ${String(error)}`
       );
       throw new Error('Failed to retrieve item');
     }
@@ -113,7 +118,7 @@ class ItemService {
         'Item',
         'UPDATE',
         'ERROR',
-        `Failed to update item with ID: ${id}, Error: ${error}`
+        `Failed to update item with ID: ${id}, Error: ${String(error)}`
       );
       throw new Error('Item update failed');
     }
@@ -145,7 +150,7 @@ class ItemService {
         'Item',
         'REMOVE',
         'ERROR',
-        `Failed to delete item with ID: ${id}, Error: ${error}`
+        `Failed to delete item with ID: ${id}, Error: ${String(error)}`
       );
       throw new Error('Item deletion failed');
     }

@@ -11,22 +11,22 @@ class ItemRouter {
 
     this.router
       .route('/')
-      .post(authenticate,async (req, res) => {
+      .post(authenticate, async (req, res) => {
         await itemController.create(req, res);
       })
-      .get(authenticate,async (req, res) => {
+      .get(authenticate, async (req, res) => {
         await itemController.getAll(req, res);
       });
 
     this.router
       .route('/:id')
-      .get(authenticate,async (req, res) => {
+      .get(authenticate, async (req, res) => {
         await itemController.getById(req, res);
       })
-      .put(authenticate,async (req, res) => {
+      .put(authenticate, async (req, res) => {
         await itemController.update(req, res);
       })
-      .delete(authenticate,async (req, res) => {
+      .delete(authenticate, async (req, res) => {
         await itemController.delete(req, res);
       });
   }

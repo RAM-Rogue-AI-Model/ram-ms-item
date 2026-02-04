@@ -38,7 +38,7 @@ class ItemController {
       return res.status(400).json({ error: 'Missing item id' });
     }
     const item = await this.service.getById(id);
-    if(!item) {
+    if (!item) {
       return res.status(404).json({ error: 'Item not found' });
     }
     res.json(item);
@@ -73,7 +73,7 @@ class ItemController {
       body.level_gap == null ||
       !body.effect_id ||
       !body.effect_name
-    ){
+    ) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
     const payload: CreateItemInput = body as CreateItemInput;

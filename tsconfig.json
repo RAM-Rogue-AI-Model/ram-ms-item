@@ -10,13 +10,6 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": [
-    "./**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "*.config.mjs",
-    ".*rc"
-  ]
+  "include": ["./**/*"],
+  "exclude": ["node_modules", "dist", "*.config.mjs", ".*rc"]
 }
