@@ -52,7 +52,9 @@ class ItemService {
   async getByLevelGap(level: number) {
     return prisma.item.findMany({
       where: {
-        level_gap: level,
+        level_gap: {
+          lte: level,
+        },
       },
     });
   }

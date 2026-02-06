@@ -17,11 +17,7 @@ const authenticate = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const requestDetails = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const requestDetails = (req: Request, res: Response, next: NextFunction) => {
   const today = new Date();
   // eslint-disable-next-line no-console
   console.log(req.method + ' - ' + req.url + ' - ' + today.toLocaleString());

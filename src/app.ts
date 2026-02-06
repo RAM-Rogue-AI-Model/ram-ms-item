@@ -2,6 +2,7 @@ import 'dotenv/config';
 
 import fs from 'node:fs';
 
+import cors from 'cors';
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import * as YAML from 'yaml';
@@ -16,14 +17,19 @@ const port = config.PORT;
 
 app.use(express.json());
 
+app.use(
+  cors({
+    origin: [config.API_GATEWAY_URL],
+    credentials: true,
+  })
+);
+
 const itemService = new ItemService();
 const itemController = new ItemController(itemService);
-
-app.use('/item', new ItemRouter(itemController).router);
-
 const file = fs.readFileSync('./openapi.yml', 'utf8');
 const swaggerDocument = YAML.parse(file) as object;
 
+app.use('/item', new ItemRouter(itemController).router);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, () => {

@@ -2,7 +2,7 @@
 CREATE TABLE `Item` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(50) NOT NULL,
-    `description` VARCHAR(50) NOT NULL,
+    `description` VARCHAR(250) NOT NULL,
     `price` DECIMAL(15, 2) NOT NULL,
     `level_gap` INTEGER NOT NULL,
     `effect_name` VARCHAR(50) NOT NULL,
@@ -10,11 +10,14 @@ CREATE TABLE `Item` (
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440000', 'heal', 'Heals 20 HP', 10.00, 1, 'pv', '660e8400-e29b-41d4-a716-446655440000');
-INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440001', 'strength_potion', 'Increases attack by 5 for 2 turns', 15.00, 2, 'attack', '660e8400-e29b-41d4-a716-446655440001');
-INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440002', 'speed_debuff', 'Decreases speed by 5 for 2 turns', 12.00, 2, 'speed', '660e8400-e29b-41d4-a716-446655440002');
-INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440003', 'speed_boost', 'Increases speed by 15 for 2 turns', 20.00, 3, 'speed', '660e8400-e29b-41d4-a716-446655440003');
-INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440004', 'mega_strength_potion', 'Increases attack by 50 for 2 turns', 50.00, 5, 'attack', '660e8400-e29b-41d4-a716-446655440004');
-INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440005', 'weakness_curse', 'Decreases attack by 10 for 3 turns', 18.00, 3, 'attack', '660e8400-e29b-41d4-a716-446655440005');
-INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440006', 'speed_curse', 'Decreases speed by 10 for 3 turns', 16.00, 3, 'speed', '660e8400-e29b-41d4-a716-446655440006');
-INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440007', 'super_heal', 'Heals 40 HP', 25.00, 4, 'pv', '660e8400-e29b-41d4-a716-446655440007');
+INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440001', "Bidon d'eau potable", 'Soigne 10 PV', 20.00, 1, 'pv', '660e8400-e29b-41d4-a716-446655440031');
+INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440002', "Baril d'eau potable", 'Soigne 20 PV', 40.00, 5, 'pv', '660e8400-e29b-41d4-a716-446655440032');
+INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440003', "Camion citerne d'eau potable", 'Soigne 30 PV', 60.00, 10, 'pv', '660e8400-e29b-41d4-a716-446655440033');
+INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440011', "16Go de RAM", "Augment la vitesse pendant 3 tours (+5 VIT)", 20.00, 1, 'speed', '660e8400-e29b-41d4-a716-446655440051');
+INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440012', "32Go de RAM", "Augment la vitesse pendant 3 tours (+10 VIT)", 40.00, 5, 'speed', '660e8400-e29b-41d4-a716-446655440052');
+INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440013', "64Go de RAM", "Augment la vitesse pendant 3 tours (+15 VIT)", 60.00, 10, 'speed', '660e8400-e29b-41d4-a716-446655440053');
+INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440014', "128Go de RAM", "Augment la vitesse pendant le prochain tour (x2 VIT)", 100.00, 15, 'speed', '660e8400-e29b-41d4-a716-446655440054');
+INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440021', "Intel core i5", "Augment l'attaque pendant 3 tours (+5 PA)", 20.00, 1, 'attack', '660e8400-e29b-41d4-a716-446655440041');
+INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440022', "Intel core i7", "Augment l'attaque pendant 3 tours (+10 PA)", 40.00, 5, 'attack', '660e8400-e29b-41d4-a716-446655440042');
+INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440023', "Intel core i9", "Augment l'attaque pendant 3 tours (+15 PA)", 60.00, 10, 'attack', '660e8400-e29b-41d4-a716-446655440043');
+INSERT INTO Item (id, name, description, price, level_gap, effect_name, effect_id) VALUES ('770e8400-e29b-41d4-a716-446655440024', "AMD Ryzen 9", "Augment l'attaque pendant le prochain tour (x2 PA)", 100.00, 15, 'attack', '660e8400-e29b-41d4-a716-446655440044');
