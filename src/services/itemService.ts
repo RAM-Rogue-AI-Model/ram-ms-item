@@ -53,7 +53,7 @@ class ItemService {
     return prisma.item.findMany({
       where: {
         level_gap: {
-          lte:level
+          lte: level,
         },
       },
     });

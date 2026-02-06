@@ -2,6 +2,7 @@ import 'dotenv/config';
 
 import fs from 'node:fs';
 
+import cors from 'cors';
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import * as YAML from 'yaml';
@@ -10,7 +11,6 @@ import { ItemController } from './controllers/ItemController';
 import { ItemRouter } from './routes/itemRouter';
 import { ItemService } from './services/itemService';
 import { config } from './utils/config';
-import cors from "cors"
 
 const app = express();
 const port = config.PORT;
