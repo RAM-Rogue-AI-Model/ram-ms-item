@@ -34,6 +34,7 @@ class ItemController {
 
   async getById(req: Request, res: Response) {
     const id: string = req.params.id as string;
+    console.log(id)
     if (!id) {
       return res.status(400).json({ error: 'Missing item id' });
     }
@@ -46,6 +47,7 @@ class ItemController {
 
   async getAll(req: Request, res: Response) {
     const level = req.query.level;
+    console.log(level)
     let items;
     if (level) {
       const levelNum = Number.parseInt(level as string);

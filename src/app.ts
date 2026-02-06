@@ -10,20 +10,26 @@ import { ItemController } from './controllers/ItemController';
 import { ItemRouter } from './routes/itemRouter';
 import { ItemService } from './services/itemService';
 import { config } from './utils/config';
+import cors from "cors"
 
 const app = express();
 const port = config.PORT;
 
 app.use(express.json());
 
+app.use(
+  cors({
+    origin: [config.API_GATEWAY_URL],
+    credentials: true,
+  })
+);
+
 const itemService = new ItemService();
 const itemController = new ItemController(itemService);
-
-app.use('/item', new ItemRouter(itemController).router);
-
 const file = fs.readFileSync('./openapi.yml', 'utf8');
 const swaggerDocument = YAML.parse(file) as object;
 
+app.use('/item', new ItemRouter(itemController).router);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, () => {
