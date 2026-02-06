@@ -22,7 +22,7 @@ services:
     environment:
       MARIADB_ROOT_PASSWORD: ${DATABASE_PASSWORD:-ram_password}
       MARIADB_DATABASE: ${DATABASE_NAME:-ram-ms-item-db}
-      MARIADB_USER: ${DATABASE_USER:-user}
+      MARIADB_USER: ${DATABASE_USER:-root}
       MARIADB_PASSWORD: ${DATABASE_PASSWORD:-ram_password}
     ports:
       - '3306:3306'
